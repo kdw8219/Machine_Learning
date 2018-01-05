@@ -20,14 +20,13 @@ grad = zeros(size(theta));
 
 z = X*theta;
 h = sigmoid(z);
-fnc = -y'*log(h) - (1-y)'*log(1-h);
-J = sum(fnc)/m + (lambda/(2*m)).*sum(theta.^2);
+thetaModified = theta;
+thetaModified(1) = 0;
 
-grad(1) =  (sum(X'(1,:)*h -X'(1,:)*y))/m;
+fnc = (-y)'*log(h)-(1-y)'*log(1-h);
+J = (1/m)*fnc + (lambda/(2*m))*sum(thetaModified.^2);
 
-for j = 2:size(theta)
-  grad(j) = (sum(X'(j,:)*h -X'(j,:)*y) + lambda.*theta(j,1))/m;
-end
+grad = ((1/m) * (X' * (h - y))) + (lambda / m * thetaModified);
 
 % =============================================================
 
