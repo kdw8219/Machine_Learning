@@ -22,9 +22,13 @@ grad = zeros(size(theta));
 
 
 
+z = X*theta;
+h = sigmoid(z);
+fnc = -y'*log(h) - (1-y)'*log(1-h);
+J = sum(fnc)/m;
 
-
-
+tgrad = (h-y)'*X;
+grad = tgrad/m;
 
 
 % =============================================================
