@@ -24,10 +24,17 @@ thetaModified = theta;
 thetaModified(1) = 0;
 
 fnc = (-y)'*log(h)-(1-y)'*log(1-h);
-J = (1/m)*fnc + (lambda/(2*m))*sum(thetaModified.^2);
+%J = (1/m)*fnc + (lambda/(2*m))*sum(thetaModified.^2);
 
-grad = ((1/m) * (X' * (h - y))) + (lambda / m * thetaModified);
+%grad = ((1/m) * (X' * (h - y))) + (lambda / m * thetaModified);
 
+J = (1/m)*sum(fnc) + (lambda/(2*m))*sum(thetaModified.^2);
+
+grad(1) = (1/m) * sum(X'(1,:) * (h - y));
+
+for j=2:size(theta)
+ grad(j) = (sum(X'(j,:) * (h - y)) + (lambda * thetaModified(j,1)))/m;
+end
 % =============================================================
 
 end
