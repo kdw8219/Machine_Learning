@@ -27,12 +27,9 @@ h = sigmoid(z);
 fnc = -y'*log(h) - (1-y)'*log(1-h);
 J = sum(fnc)/m;
 
-%tgrad = (h-y)'*X;
-%grad = tgrad/m;
+tgrad = (h-y)'*X;
+grad = tgrad/m;
 
-for j = 1:size(theta)
-  grad(j) = sum(X'(j,:)*h - X'(j,:)*y)/m;
-end
 
 % =============================================================
 
