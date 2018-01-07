@@ -84,5 +84,6 @@ pause;
 
 pred = predictOneVsAll(all_theta, X);
 
+%find the most accurate vector. if it is 10, it means prediction works well, can calculate the accuracy
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
 

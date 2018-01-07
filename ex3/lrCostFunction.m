@@ -37,12 +37,15 @@ grad = zeros(size(theta));
 %
 
 
+z = X*theta;
+h = sigmoid(z);
+thetaModified = theta;
+thetaModified(1) = 0;
 
+fnc = (-y)'*log(h)-(1-y)'*log(1-h);
+J = (1/m)*fnc + (lambda/(2*m))*sum(thetaModified.^2);
 
-
-
-
-
+grad = ((1/m) * (X' * (h - y))) + (lambda / m * thetaModified);
 
 
 % =============================================================
