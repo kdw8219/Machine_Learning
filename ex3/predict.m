@@ -26,7 +26,6 @@ X = [ones(m, 1) X];
 z1 = X * Theta1';
 h1 = sigmoid(z1);
 
-
 h1 = [ones(m,1) h1];
 z2 = h1 * Theta2';
 h2 = sigmoid(z2);
